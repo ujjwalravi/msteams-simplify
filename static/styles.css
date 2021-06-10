@@ -1,0 +1,47 @@
+body {
+    padding: 2px;
+}
+h1 {
+    text-align: center;
+    background-color: #6B6C9E;
+    color: #EFEDFF;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+.upload {
+    font-size: 150%;
+}
+
+hr {
+
+    border: 2px solid #6B6C9E;
+}
+
+section {
+    padding: 10px;
+}
+
+input[type=submit] {
+    background-color: #6B6C9E;
+    color: #EFEDFF;
+}
+
+.radios {
+    padding-bottom: 13px;
+}
+
+.button {
+    background-color: #6B6C9E;
+    color: #EFEDFF;
+}
+
+.spin {
+    color: #6B6C9E;
+}
+
+.button-green {
+    background-color: #0c8630;
+    color: #EFEDFF;
+    border: solid 1px #0c8630;
+}

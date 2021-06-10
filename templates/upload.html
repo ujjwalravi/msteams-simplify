@@ -1,0 +1,81 @@
+<html lang="en">
+<head>
+    <title>Upload attendance file</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../static/script.js"></script>
+    <script src="https://kit.fontawesome.com/2c901e3f16.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="Modal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">How we automatically assume the end time?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>The downloaded MS Teams attendance file doesn't record the meeting end time. So, we have to somehow asssume 
+                  the meeting end time. I'll explain this thing with few examples.
+              </p>
+              <p>Suppose meeting was started at 01:01:15 and it is scheduled till 02:00:00. The script looks into alphabetically arranged names and selects the name in the middle of the list and sees it's joined time
+                  let's assume 01:05:16 and then picks the hr digit and increments it by 1. So, here meeting end time becomes 2:00:00.
+              </p>
+              <p>Suppose meeting was started at 02:57:15 and it is scheduled till 04:00:00. Suppose the middle name joined at 02:59:05 and this script picked the hr digit and incremented it by 1 and hence 
+                  sets meeting end time as 03:00:00. This will generate wrong results.
+              </p>
+              <p>Chances of happening this is very rare but not inevitable. Still, I'll ask the users to manually write the meeting end time. This will generate you 100% accurate results.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="button" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+        <h1>Microsoft Teams attendance simplifier</h1>
+        <p class="upload">Upload the downloaded MS Teams attendance file here:</p>
+        <hr>
+        <section class="upload-box">
+            
+                    <form action="/success" method=post enctype=multipart/form-data>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Provide meeting END time (100 % accuracy)
+                              
+                            </label>
+                          </div>
+                          <div class="form-check radios">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Automatically assume meeting END time (only if your meeting lasts 1 hr but accuracy not guaranteed) <span><a href="#Modal">How & Why?</a></span>
+                            </label>
+                          </div>
+                          <div class="endtime-info">
+                            <p>Enter the meeting END time in <b>"HH:MM:SS"</b> format. It should be in 12 hr format.</p>
+                            <div class="radios">
+                                <input type="text" name="endtime" placeholder="02:15:32">
+                            </div>
+                        </div>             
+                        <p>
+                            <input type="file" name="aFile" accept=".csv">
+                        </p>
+                        <p>
+                            <input class="button" type="submit" value="UPLOAD"> <i class="fas fa-spin fa-circle-notch spin"></i>
+                        </p>        
+                    </form>
+                    <p>( Maximum upload size is 1 mb and it should be in .csv format )</p>
+        </section>
+        <hr>
+        <footer>
+            <p>Developed by <i>RAVI UJJWAL</i> <a href="https://www.linkedin.com/in/ravi-ujjwal/" target="_blank"><button class="button">Linked In <i class="fab fa-linkedin"></i></button></a> <a href="https://www.instagram.com/raviujjwal2900/" target="_blank"><button class="button">Instagram <i class="fab fa-instagram"></i></button></a></p>
+            <p>Contribute to the code at <a href="https://github.com/ujjwalravi/msteams-simplify" target="_blank"><button class="button">GitHub <i class="fab fa-github"></i> </button></a></p>
+        </footer>
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+</body>
+</html>
