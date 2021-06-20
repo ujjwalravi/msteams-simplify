@@ -27,5 +27,9 @@ def success():
 def download_file(var):
     return send_file(var, as_attachment=True)
 
+@app.route('/sampleFile', methods=['GET', 'POST'])
+def download_sample_file():
+    return send_file('sample_file.csv', as_attachment=True)
+
 if __name__ == '__main__':
     app.run(debug= True)
