@@ -4,7 +4,7 @@ import codecs
 import json
 
 def simplifyCSV(f, e):
-    csv_reader = csv.reader(codecs.open('01-06-21.csv', 'rU', 'utf-16'), delimiter = '\t')
+    csv_reader = csv.reader(codecs.open(f, 'rU', 'utf-16'), delimiter = '\t')
     next(csv_reader)  # won't print first row
     newlist = []
     studentDetails = []
